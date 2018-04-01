@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-    <head>@include('blogviews..partials._header')</head>
+    <head>@include('blogviews.partials._header')</head>
 
     <body>
 
