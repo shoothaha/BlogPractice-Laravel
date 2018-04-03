@@ -7,7 +7,9 @@
 
         @include('blogviews.partials._nav')
 
-        <div class="container">       
+        <div class="container">
+
+            @include('blogviews.partials._messages')       
             
             @yield('content')
             @include('blogviews.partials._footer')

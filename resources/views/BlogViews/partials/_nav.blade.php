@@ -31,7 +31,7 @@
                     <li><a class="dropdown-item" href="#">Action</a></li>
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li role = "separator" class="divider"></li>
+                    <hr>
                     <li><a class="dropdown-item" href="#"> Log Out</a></li>
                 </ul>
             </li>
