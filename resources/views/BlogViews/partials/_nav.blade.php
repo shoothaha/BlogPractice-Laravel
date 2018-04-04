@@ -19,6 +19,10 @@
             <li class="nav-item">
             <a class="nav-link" href="contact">Contact</a>
             </li>
+
+            <li class="nav-item">
+            <a class="nav-link" href="{{ route('posts.index') }}">All Posts</a>
+            </li>
         </ul>
 
         <ul class="navbar-nav navbar-right">

@@ -12,6 +12,7 @@
             @include('blogviews.partials._messages')       
             
             @yield('content')
+
             @include('blogviews.partials._footer')
 
         </div>  <!-- end of container -->
