@@ -15,7 +15,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // 建立变量以存储所有数据库中post的内容
+        $posts = Post::all();
+
+        //返回视图
+         return view('blogposts.index') -> with('posts', $posts);
     }
 
     /**
@@ -78,7 +82,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+    	$post = Post::find($id);
+        return view('blogposts.edit')->with('post', $post);
     }
 
     /**
@@ -90,7 +95,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this -> validate($request, array(
+    		'titles' => 'required|max:255',
+    		'body' => 'required'
+    	));
+
+    	$post = Post::find($id);
+
+    	$post->titles = $request->input('titles');
+    	$post->body = $request->input('body');
+
+    	$post->save();
+
+    	Session::flash('success', 'This post was changed and saved!');
+
+    	return redirect()->route('posts.show', $post->id);
     }
 
     /**
