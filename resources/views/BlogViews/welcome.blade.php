@@ -21,13 +21,22 @@
         
         <div class="row">
             <div class="col-md-8" style="background-color: #e3f2fd;">
-                <h3>Posts</h3>
-                Below will possibly shows the main contents of blogs.
 
-                <p><a href="#" class="btn btn-primary">Read More</a></p>
+                @foreach($posts as $post)
+
+                    <div class="post">
+                        <h3>{{ $post->titles }}</h3>
+                        <p>{{ substr($post->body, 0, 200) }} {{ strlen($post->body) > 200 ? '...' : ''}}</p>
+
+                        <a href="{{ url('blog/'.$post -> slug) }}" class="btn btn-primary">Read More</a>
+                    </div>
+                    <hr>
+
+                @endforeach
+
             </div>
             
-            <hr>
+            
 
             <div class="col-md-3 col-md-offset-1" style="background-color: #C0FFCA">
                 
@@ -35,32 +44,6 @@
                 Here would be the sidebar or side-page contents.
             </div>
 
-            <hr>
-
-            <div class="col-md-8" style="background-color: #e3f2fd;">
-                <h3>Posts</h3>
-                Below will possibly shows the main contents of blogs.
-
-                <p><a href="#" class="btn btn-primary">Read More</a></p>
-            </div>
-            
-            <hr>
-
-            <div class="col-md-8" style="background-color: #e3f2fd;">
-                <h3>Posts</h3>
-                Below will possibly shows the main contents of blogs.
-
-                <p><a href="#" class="btn btn-primary">Read More</a></p>
-            </div>
-            
-            <hr>
-
-            <div class="col-md-8" style="background-color: #e3f2fd;">
-                <h3>Posts</h3>
-                Below will possibly shows the main contents of blogs.
-
-                <p><a href="#" class="btn btn-primary">Read More</a></p>
-            </div>
 
             
         </div>

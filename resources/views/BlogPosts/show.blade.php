@@ -12,7 +12,7 @@
 		</div>
 
 		<div class="col-md-4">
-			<div class="well">
+			<div class="well" style="background-color: #D4FCE7">
 				<dl class="dl-horizontal">
 					<dt>Created At:</dt>
 					<dd>{{ date('d-M-Y, H:i:s',  strtotime($post -> created_at)) }}</dd>
@@ -22,6 +22,12 @@
 					<dt>Last Updated:</dt>
 					<dd>{{ date('d-M-Y, H:i:s',  strtotime($post -> updated_at)) }}</dd>
 				</dl>
+				<hr>
+
+				<div class="dl-horizontal">
+					<dt>Slug URL:</dt>
+					<dd><a href="{{ url('blog/'.$post -> slug) }}">{{ url('blog/'.$post -> slug) }}</a></dd>
+				</div>
 				<hr>
 
 				<div class="row">
@@ -38,6 +44,8 @@
 						{!! Form::close() !!}
 					</div>
 				</div>
+				<hr>
+				{{ Html::linkRoute('posts.index', 'Back to all posts', [], ['class' => 'btn btn-default btn-block btn-h1-spacing', 'style' => 'background-color: #9BC5FE']) }}
 			</div>
 		</div>
 	</div>

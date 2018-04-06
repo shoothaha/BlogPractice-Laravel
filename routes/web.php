@@ -19,3 +19,5 @@ Route::get('/', 'PagesController@getIndex');
 
 Route::resource('posts', 'PostController');
 
+Route::get('blog/{slug}', ['as' => 'PublicViews.blogs', 'uses' => 'BlogController@getBlogs'])
+	->where('slug', '[\w\d\-\_]+');

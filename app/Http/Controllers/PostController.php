@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         // 建立变量以存储所有数据库中post的内容
-        $posts = Post::all();
+        $posts = Post::orderby('created_at', 'desc')->paginate(5);
 
         //返回视图
          return view('blogposts.index') -> with('posts', $posts);
@@ -43,13 +43,16 @@ class PostController extends Controller
         // 检查/validate 数据输入
     	$this -> validate($request, array(
     		'titles' => 'required|max:255',
-    		'body' => 'required'
+    		'body' => 'required',
+    		'slug' => 'required | alpha_dash | min:5 | max: 50 | unique:posts,slug'
+
     	));
 
         //存入数据库
     	$post = new Post;
     	$post -> titles = $request -> titles;
     	$post -> body = $request -> body;
+    	$post -> slug = $request -> slug;
 
     	$post -> save();
 
@@ -95,15 +98,25 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this -> validate($request, array(
-    		'titles' => 'required|max:255',
-    		'body' => 'required'
-    	));
+    	$post = Post::find($id);
+        if ($request -> input('slug') == $post -> slug){
+        	$this -> validate($request, array(
+	    		'titles' => 'required|max:255',
+	    		'body' => 'required',
+	    	));
+        } else {
+        	$this -> validate($request, array(
+	    		'titles' => 'required|max:255',
+	    		'body' => 'required',
+	    		'slug' => 'required | alpha_dash | min:5 | max: 50 | unique:posts,slug'
+	    	));
+        };
 
     	$post = Post::find($id);
 
     	$post->titles = $request->input('titles');
     	$post->body = $request->input('body');
+    	$post->slug = $request->input('slug');
 
     	$post->save();
 
