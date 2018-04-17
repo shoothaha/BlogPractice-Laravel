@@ -27,19 +27,26 @@
         </ul>
 
         <ul class="navbar-nav">
+            @if (Auth::check())
             <li class="nav-item dropdown dropdown-menu-left">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                My Account
+                Hello {{ Auth::user()->name }}
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="{{ route('posts.index') }}">My Posts</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+
                     <hr>
-                    <li><a class="dropdown-item" href="#">Log Out</a></li>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}">Log Out</a></li>
                 </ul>
             </li>
+            
+            @else
+
+                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+
+            @endif
+
         </ul>
     </div>
 

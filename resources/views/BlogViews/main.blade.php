@@ -9,7 +9,9 @@
 
         <div class="container">
 
-            @include('blogviews.partials._messages')       
+            @include('blogviews.partials._messages')
+
+              
             
             @yield('content')
 
